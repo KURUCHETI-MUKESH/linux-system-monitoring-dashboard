@@ -1,31 +1,57 @@
+# Linux System Monitoring Dashboard
 
-A Python-based Linux system monitoring project that tracks CPU usage, RAM utilization, disk space, system uptime, and running processes through an interactive Streamlit dashboard.
+A real-time Linux system monitoring dashboard built with Python,
+Streamlit, and Psutil. It helps monitor CPU usage, memory usage, disk
+space, system uptime, running processes, and system health alerts
+through a web interface.
 
-## Project Overview
-
-The Linux System Monitoring Dashboard collects system performance information using Python and the Psutil library. It presents important metrics and visualizations through a web-based dashboard built with Streamlit and Plotly.
-
-The project also includes a separate health-checking script that identifies high CPU, RAM, and disk usage and records alerts in a log file.
+The project was developed and tested in Ubuntu on WSL2. On WSL2,
+resource readings represent the Ubuntu environment and may differ from
+Windows Task Manager.
 
 ## Features
 
 - Automatic dashboard refresh every 5 seconds.
-- Real-time CPU usage monitoring and history chart.
+- CPU usage monitoring and history chart.
 - RAM usage monitoring and history chart.
-- Disk space monitoring.
-- System uptime monitoring.
+- Disk space and disk usage monitoring.
+- System uptime display.
 - Running process monitoring.
-- Process search and filtering.
+- Search and filter running processes.
 - Configurable warning and critical thresholds.
-- Integrated system health alerts.
-- Alert history with CSV export.
-- Downloadable CPU, RAM and disk metrics reports.
-- Downloadable process reports.
+- System health status for CPU, RAM, and disk.
+- Alert history in the dashboard.
+- CSV export for alert history.
+- CSV export for CPU, RAM, and disk metrics.
+- CSV export for process information.
+
+## Screenshots
+
+### Dashboard Overview
+
+![Dashboard Overview](images/dashboard_overview.png)
+
+### CPU Metrics History
+
+![CPU Metrics History](images/CPU metrics_history.png)
+
+### RAM Metrics History
+
+![RAM Metrics History](images/RAM metrics_history.png)
+
+### System Health Alerts
+
+![System Health Alerts](images/system_alerts.png)
+
+### Process Monitoring
+
+![Process Monitoring](images/process_monitoring.png)
 
 ## Technologies Used
 
 - Python
-- Linux / Ubuntu / WSL2
+- Linux / Ubuntu
+- WSL2
 - Streamlit
 - Streamlit Autorefresh
 - Psutil
@@ -37,7 +63,6 @@ The project also includes a separate health-checking script that identifies high
 
 ```text
 linux-system-monitor/
-│
 ├── app.py
 ├── cpu_monitor.py
 ├── memory_monitor.py
@@ -45,13 +70,26 @@ linux-system-monitor/
 ├── process_monitor.py
 ├── health_check.py
 ├── requirements.txt
-├── .gitignore
 ├── README.md
-│
-└── images/
-    ├── dashboard_overview.png
-    └── process_monitoring.png
+├── .gitignore
+├── images/
+│   ├── dashboard_overview.png
+│   ├── CPU metrics_history.png
+│   ├── RAM metrics_history.png
+│   ├── system_alerts.png
+│   └── process_monitoring.png
+└── venv/
 ```
+
+The `venv/` directory is a local virtual environment and should not be
+committed to GitHub.
+
+## Requirements
+
+- Python 3
+- Ubuntu or another Linux distribution
+- pip
+- Git
 
 ## Installation and Setup
 
@@ -68,7 +106,7 @@ cd linux-system-monitoring-dashboard
 python3 -m venv venv
 ```
 
-### 3. Activate the environment
+### 3. Activate the virtual environment
 
 ```bash
 source venv/bin/activate
@@ -80,95 +118,78 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 5. Run the dashboard
+If you need to install the packages manually, use:
+
+```bash
+pip install psutil streamlit streamlit-autorefresh plotly pandas
+```
+
+## Run the Dashboard
+
+From the project directory, with the virtual environment activated, run:
 
 ```bash
 streamlit run app.py
 ```
 
-Open the local URL displayed in the terminal, usually:
+Open the local address shown in the terminal. It is usually:
 
 ```text
 http://localhost:8501
 ```
 
-## Run Individual Monitoring Programs
+## Run the Individual Monitoring Scripts
 
-CPU monitoring:
+Run these scripts independently from the project directory:
 
 ```bash
 python cpu_monitor.py
-```
-
-Memory monitoring:
-
-```bash
 python memory_monitor.py
-```
-
-Disk and uptime monitoring:
-
-```bash
 python disk_monitor.py
-```
-
-Process monitoring:
-
-```bash
 python process_monitor.py
-```
-
-System health checker:
-
-```bash
 python health_check.py
 ```
 
-## Health Alert Thresholds
+The Streamlit dashboard is started separately with
+`streamlit run app.py`.
 
-| Resource | Healthy | Warning | Critical |
-|---|---|---|---|
-| CPU | 80% or below | Above 80% to 90% | Above 90% |
-| RAM | 80% or below | Above 80% to 90% | Above 90% |
-| Disk | 80% or below | Above 80% to 90% | Above 90% |
+## Health Alerts
 
-These are configurable example thresholds used by this project, not universal operating-system standards.
+The standalone health checker uses these thresholds:
 
-## Screenshots
+- **Warning:** resource usage is above 80%.
+- **Critical:** resource usage is above 90%.
 
-### Dashboard Overview
+It can write alerts to `health_alerts.log` when a threshold is exceeded.
+The dashboard also displays health status and alert history.
 
-![Dashboard Overview](images/dashboard_overview.png)
+## CSV Reports
 
-### CPU and RAM History
+The dashboard provides download controls for:
 
-![CPU and RAM History](images/CPUmetrics_history.png,RAMmetrics_history.png)
+- System metrics (CPU, RAM, and disk).
+- Alert history.
+- Running process information.
 
-### System Health Alerts
+Metric and alert history is maintained in the active Streamlit session.
+It is not stored in a permanent database and may reset when the app or
+session restarts.
 
-![System Health Alerts](images/system_alerts.png)
+## Notes
 
-### Process Monitoring
-
-![Process Monitoring](images/process_monitoring.png)
-
-## Learning Outcomes
-
-- Practiced Linux commands and terminal operations.
-- Used Python to collect system performance information.
-- Worked with the Psutil library.
-- Built an interactive dashboard using Streamlit.
-- Created visualizations using Plotly.
-- Implemented system health checks and alert logging.
-- Practiced Git and GitHub project management.
-
-## Platform Notes
-
-This project was developed and tested in Ubuntu running through WSL2 on Windows. System readings, available resources, disk information, and uptime can differ between WSL2 and a native Linux installation.
+- On WSL2, resource readings may not match Windows Task Manager
+  exactly.
+- Keep the `venv/` directory out of Git commits.
+- The screenshot links above depend on the exact filenames in the
+  `images/` folder. If a filename changes, update its README link too.
 
 ## Author
 
 **Kurucheti Mukesh**
 
-GitHub: https://github.com/KURUCHETI-MUKESH
+GitHub: [KURUCHETI-MUKESH](https://github.com/KURUCHETI-MUKESH)
 
+## License
+
+This project is shared for learning and portfolio purposes. Add a formal
+license file if you want to define reuse and distribution permissions.
