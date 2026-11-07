@@ -10,20 +10,25 @@ The project also includes a separate health-checking script that identifies high
 
 ## Features
 
-- **CPU Monitoring:** Displays current CPU utilization.
-- **Memory Monitoring:** Shows total, used, and available RAM.
-- **Disk Monitoring:** Displays total, used, and free disk space.
-- **System Uptime:** Calculates the time since the Linux environment started.
-- **Process Monitoring:** Lists running processes and their memory usage.
-- **Interactive Dashboard:** Presents system metrics, charts, and process information.
-- **Health Alerts:** Identifies healthy, warning, and critical resource usage.
-- **Alert Logging:** Saves generated health alerts to a local log file.
+- Automatic dashboard refresh every 5 seconds.
+- Real-time CPU usage monitoring and history chart.
+- RAM usage monitoring and history chart.
+- Disk space monitoring.
+- System uptime monitoring.
+- Running process monitoring.
+- Process search and filtering.
+- Configurable warning and critical thresholds.
+- Integrated system health alerts.
+- Alert history with CSV export.
+- Downloadable CPU, RAM and disk metrics reports.
+- Downloadable process reports.
 
 ## Technologies Used
 
 - Python
-- Linux (Ubuntu on WSL2)
+- Linux / Ubuntu / WSL2
 - Streamlit
+- Streamlit Autorefresh
 - Psutil
 - Pandas
 - Plotly
@@ -132,7 +137,21 @@ These are configurable example thresholds used by this project, not universal op
 
 ## Screenshots
 
-Dashboard screenshots are available in the `images/` folder.
+### Dashboard Overview
+
+![Dashboard Overview](images/dashboard_overview.png)
+
+### CPU and RAM History
+
+![CPU and RAM History](images/CPUmetrics_history.png,RAMmetrics_history.png)
+
+### System Health Alerts
+
+![System Health Alerts](images/system_alerts.png)
+
+### Process Monitoring
+
+![Process Monitoring](images/process_monitoring.png)
 
 ## Learning Outcomes
 
