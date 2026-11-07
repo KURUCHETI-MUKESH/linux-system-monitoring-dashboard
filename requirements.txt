@@ -1,4 +1,8 @@
 psutil
 streamlit
+streamlit-autorefresh
+plotly
+pandasopsutil
+streamlit
 plotly
 pandas
