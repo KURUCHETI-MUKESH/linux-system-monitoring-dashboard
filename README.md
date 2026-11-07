@@ -33,11 +33,11 @@ Windows Task Manager.
 
 ### CPU Metrics History
 
-![CPU Metrics History](images/CPU metrics_history.png)
+![CPU Metrics History](images/CPUmetrics_history.png)
 
 ### RAM Metrics History
 
-![RAM Metrics History](images/RAM metrics_history.png)
+![RAM Metrics History](images/RAMmetrics_history.png)
 
 ### System Health Alerts
 
