@@ -1,4 +1,3 @@
-# Linux System Monitoring Dashboard
 
 A Python-based Linux system monitoring project that tracks CPU usage, RAM utilization, disk space, system uptime, and running processes through an interactive Streamlit dashboard.
 
